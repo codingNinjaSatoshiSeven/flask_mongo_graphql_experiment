@@ -1,0 +1,27 @@
+type Query {
+  booking(id:String!): Booking
+  vehicle(id:String!): Vehicle
+}
+
+type Booking {
+  id: String!
+  booking_price: Float!
+  start_time: String!
+  end_time: String!
+}
+
+type Vehicle {
+    id: String!
+    type: String!
+    default_hourly_rate: Float!
+    make: String!
+    model: String!
+    year: Int!
+    registration_tag: String!
+    current_mileage: Float!
+    condition: String!
+    capacity: Int!
+    last_service_time: String!
+    is_available: Boolean!
+    booking: [Booking]
+}
