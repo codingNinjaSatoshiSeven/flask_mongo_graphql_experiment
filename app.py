@@ -11,6 +11,7 @@ type_defs = load_schema_from_path('schema.graphql')
 
 #query = QueryType()
 query = ObjectType("Query")
+mutation = ObjectType("Mutation")
 vehicle = ObjectType("Vehicle")
 booking = ObjectType("Booking")
 
@@ -19,8 +20,11 @@ booking = ObjectType("Booking")
 query.set_field("vehicle", r.getVehicles)
 query.set_field("booking", r.getBookings)
 
+#Set Mutation fields
+mutation.set_field("newBooking",r.addBooking)
 
-schema = make_executable_schema(type_defs, [query, booking, vehicle])
+
+schema = make_executable_schema(type_defs, [query, booking, vehicle, mutation])
 
 @app.route('/graphql', methods=['GET'])
 def playground():
@@ -39,5 +43,5 @@ def graphql_server():
     return jsonify(result), status_code
 
 if __name__ == "__main__":
-    init_db()
+    #init_db()
     app.run(host='0.0.0.0')

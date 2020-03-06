@@ -3,6 +3,10 @@ type Query {
   vehicle(id:String!): Vehicle
 }
 
+type Mutation {
+  newBooking(vehicle_id: String!, booking_price: Float!, start_time: String, end_time: String): Vehicle
+}
+
 type Booking {
   id: String!
   booking_price: Float!
